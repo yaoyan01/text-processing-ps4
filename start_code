@@ -1,0 +1,7 @@
+#!/bin/bash
+
+python3 realcode.py  https://en.wikipedia.org/wiki/Category:Love 107;
+python3 realcode.py  https://en.wikipedia.org/wiki/Category:O%27Flaherty_dynasty 34;
+python3 realcode.py  https://en.wikipedia.org/wiki/Category:Cooking 34; 
+
+

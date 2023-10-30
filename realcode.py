@@ -95,4 +95,6 @@ def main_parser(url, num):
     plt.show()
 
 
-main_parser("https://en.wikipedia.org/wiki/Category:Endangered_animals", 5)
+if __name__ == "__main__":
+    import sys
+    main_parser(sys.argv[1], int(sys.argv[2]))
