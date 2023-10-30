@@ -1,0 +1,10 @@
+1. write a python program that takes 2 arguments
+    - url of any of the 3 wiki pages
+    - number of links you want to process
+2. create an empty list of strings
+    - each string represents the content of one of the links 
+    ['', '', '', ...]
+    - the length of this array should be equal to the second arguments
+3. for each link under pages in category x:
+    -go to the page
+    -extract the text
