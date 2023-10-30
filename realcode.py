@@ -50,11 +50,13 @@ def main_parser(url, num):
         final_text[index] = strings
         index += 1
 
+    # creating a list of lists of tokens
     token_list = [] * num
     for string in final_text:
         listoftokens = nltk.word_tokenize(string)
         token_list.append(listoftokens)
 
+    # creating stop words and adding more to them
     removed_stopwords_list = [] * num
     stoplist = stopwords.words('english')
     stoplist.extend([".", ",", "?", "'",
@@ -62,21 +64,27 @@ def main_parser(url, num):
                      "category", "also", "(", ")", "[", "]", "{", "}" "Wikipedia", "article",
                      "Categories", "pages", "%", "may", "find", "soon", 'wikipedia', "e.g", "readers", "see", ":",
                      "however", "link", "introduction", "Similarly", "without", "categories", "help", ])
+
+    # creating a list of list with all of the stop words removed from them
     for list in token_list:
         allcontenttokens = [x for x in list if x.lower() not in stoplist]
         removed_stopwords_list.append(allcontenttokens)
 
+    # initliazing word lemmatizer
     all_lemmas_list = [] * num
     lemmatizer = WordNetLemmatizer()
 
+    # creating a list of list after lemmatizing them
     for list in removed_stopwords_list:
         all_lemmas = [lemmatizer.lemmatize(x) for x in list]
         all_lemmas_list.append(all_lemmas)
 
+    # creating text of the most common lemmas in the list
     for lemmas in all_lemmas_list:
         fdist = nltk.FreqDist(lemmas)
         text = " ".join(fdist)
 
+    # generating the wordcloud
     wordcloud = WordCloud().generate(text)
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
